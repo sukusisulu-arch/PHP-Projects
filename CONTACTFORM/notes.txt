@@ -1,0 +1,32 @@
+document.getElementById('send').addEventListener("click", function() {
+    // 1. First, grab all the DOM element objects
+    var nameInput = document.getElementById('name'); 
+    var emailInput = document.getElementById('email');
+    var messageInput = document.getElementById('message');
+    var msg = document.getElementById('msg');
+    var test = document.getElementById('test'); // Kept if needed elsewhere
+
+    // 2. Clear any previous hidden styles so the message can be seen again
+    test.style.display = "block";
+
+    // 3. Extract the clean text values from the inputs
+    var nameValue = nameInput.value.trim();
+    var emailValue = emailInput.value.trim();
+    var messageValue = messageInput.value.trim();
+
+    // 4. Now, check if every field contains real text
+    if (nameValue !== "" && emailValue !== "" && messageValue !== "") {
+        
+        // 5. Output the success message with valid HTML quoting
+        test.innerHTML = "<span style='color:green;'>Message Sent</span><br>";
+
+        // 6. Execute the timer function safely after 5000 milliseconds
+        setTimeout(function() {
+            test.style.display = "none";
+        }, 5000);
+
+    } else {
+        // Optional: Alert the user if fields are missing
+        test.innerHTML = "<span style='color:red;'>Please fill in all fields!</span><br>";
+}
+});

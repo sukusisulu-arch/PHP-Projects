@@ -1,0 +1,51 @@
+*{
+    margin:0;
+    padding:0;
+}
+/*header*/
+header{
+    background:red;
+    height:100px;
+}
+/*main*/
+main{
+    background:green;
+    height:500px;
+    display:flex;
+    justify-content:center;
+    
+    
+}
+.form-div{
+    border:solid brown;
+    width:max-content;
+    
+    
+}
+.input{
+    padding:20px;
+    width:200px;
+    margin-top:10px;
+}
+button{
+    padding:10px;
+    width:58px;
+    border-radius:20px;
+    margin-top:10px;
+}
+.output-div{
+    border:solid blue;
+    background:white;
+    height:200px;
+    margin-top:10px;
+    color:black;
+}
+.submit{
+    display:block;
+    margin-top:10px;
+}
+/*footer*/
+footer{
+    background:magenta;
+    height:300px;
+}

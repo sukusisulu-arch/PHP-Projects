@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    
+</head>
+<body>
+    <select id="country"></select><div class="container mt-4">
+        <label for="country-picker" class="form-label">Select Country:</label>
+        <select id="country-picker" class="selectpicker countrypicker form-control" data-live-search="true">
+        </select>
+      </div>
+    
+    
+
+<script>
+  fetch('https://restcountries.com/v3.1/all?fields=name,cca2')
+    .then(r => r.json())
+    .then(data => {
+      var select = document.getElementById('country');
+      data.forEach(c => {
+        select.innerHTML += `<option value="${c.cca2}">${c.name.common}</option>`;
+      });
+    });
+</script>  
+
+<!-- Bootstrap 4/5 CSS -->
+<link rel="stylesheet" href="https://jsdelivr.net">
+<!-- Bootstrap Select CSS -->
+<link rel="stylesheet" href="https://cloudflare.com">
+<!-- Bootstrap Select Country CSS -->
+<link rel="stylesheet" href="https://jsdelivr.net">
+
+<!-- jQuery (Required) -->
+<script src="https://jquery.com"></script>
+<!-- Bootstrap Bundle JS -->
+<script src="https://jsdelivr.net"></script>
+<!-- Bootstrap Select JS -->
+<script src="https://cloudflare.com"></script>
+<!-- Bootstrap Select Country JS -->
+<script src="https://jsdelivr.net"></script>
+</body>
+</html>
