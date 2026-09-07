@@ -7,8 +7,8 @@
         $name = $_POST['name'] ?? '';
         $password = $_POST['password'] ?? '';
         
-        $validName = "Suku";
-        $validPassword = "Mawaseka";
+        $validName = "s";
+        $validPassword = "m";
         
         if ($name === $validName && $password === $validPassword) {
             $message = "<h3>Login Success</h3>";
@@ -24,6 +24,7 @@
     }
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,17 +38,14 @@
         body {background:linear-gradient(grey,brown,navy,black);}
         section{height:30vh;display:flex;flex-direction:column;background:rgba(0,0,0,0.6);align-items:center;color:white;font-size:30px;}
         .login-div{text-align: center;}
-        /* Handle the smooth fading effect natively using CSS animation if login succeeds */
+        .container{display: flex;flex-direction:column;background:rgba(0,0,0,0.7);text-align:center;height:70vh;padding:10vw;}
         .fade-out {animation: fadeEffect 3s forwards;animation-delay: 1s;}
         @keyframes fadeEffect {from { opacity: 1; } to { opacity: 0; }}
-        form{display: flex;flex-direction:column;background:rgba(0,0,0,0.7);text-align:center;height:70vh;width:60vh;padding:10vh;}
-        form input{border:none;border-radius:3px;padding:20px;margin:20px;width:30vh}
-        form button{width:100px;margin:1px;padding:10px;font-size:20px;border:white;display:flex;}
+        .container input{border:none;border-radius:3px;padding:20px;margin:20px;width:30vh}
+        .container button{width:100px;margin:1px;padding:10px;font-size:20px;border:white;display:flex;}
         form button:hover{border-radius:10px;background:green;}
-        form .home:hover{background:magenta;}
-        .form-box{display:flex;flex-direction:column;align-items:center;}
+        .home:hover{background:magenta;}
         .home{position:relative;top:-2%;right:-27%;width:100px;padding:1vh;}
-        .container{justify-content:center;}
     </style>
 </head>
 <body>
@@ -59,21 +57,18 @@
     </section>
     
     <div class="container">
-        <!-- Registration Form -->
-        <div class="form-box">
-        <!-- Login Form -->
-            <div>
-                <form method="POST" action="login.php">
-                    <div id="login-div" class="login-div <?php echo ($trigger_fade) ? 'fade-out' : ''; ?>" style="color: <?php echo $message_color; ?>;">
-                        <?php echo $message; ?>
-                    </div><br>
-                    <input type="text" id="name" name="name" placeholder="Enter Name" required>
 
-                    <input type="password" id="password" name="password" placeholder="Enter Password" required>
+        <form method="POST" action="login.php">
+            <div id="login-div" class="login-div <?php echo ($trigger_fade) ? 'fade-out' : ''; ?>" style="color: <?php echo $message_color; ?>;">
+                <?php echo $message; ?>
+            </div><br>
+            <input type="text" id="name" name="name" placeholder="Enter Name" required>
 
-                    <button type="submit" id="login">Login</button>
-                </form>
-        </div>
+            <input type="password" id="password" name="password" placeholder="Enter Password" required>
+
+            <button type="submit" id="login">Login</button>
+        </form>
+
     </div>
 </body>
 </html>
