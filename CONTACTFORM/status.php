@@ -32,28 +32,47 @@
                     <h4>20 Users</h4>
                 </div>
                 <div>
-                    <h3>Information</h3>
                     
                     <?php
+                        echo"<h1 style='font-family:Arial;'>Contacts Table</h1>";
+                        echo"<br><hr>";
+                        $sql = "SELECT Post_id, Name, Message,Published FROM contact";
+                        $result = $connection->query($sql);
 
-                    // Get all blog posts from the 'posts' table
-                    $sql = "SELECT Post_id, Name, Message,Published FROM contact";
-                    $result = $connection->query($sql);
-
-                    // Check if we got any results
-                    if ($result->num_rows > 0) {
-                        // Loop through and display each row
-                        while ($row = $result->fetch_assoc()) {
-                            echo "Post #" . $row["Post_id"] . " - " . $row["Message"] .
-                                " by " . $row["Name"] . " (Published: " . $row["Published"] . ")<br>";
+                        // Check if we got any results
+                        if ($result->num_rows > 0) {
+                            // Loop through and display each row
+                            while ($row = $result->fetch_assoc()) {
+                                echo "Post #" . $row["Post_id"] . " - " . $row["Message"] .
+                                    " by " . $row["Name"] . " (Published: " . $row["Published"] . ")<br>";
+                            }
+                        } else {
+                            echo "<span style='color:red'>No Posts Just Yet.</span>";
                         }
-                    } else {
-                        echo "<span style='color:red'>No blog posts found.</span>";
-                    }
+                        echo"<br><hr>";
+                    ?>
+                    
+                    <?php
+                        echo"<br><h1 style='font-family:Arial;'>Secure Contacts Table</h1>";
+                        echo"<br><hr>";
+                        $sql2 = "SELECT id, name, email,message,reg_date FROM secure_contacts";
+                        $result = $connection->query($sql2);
 
-                    // Output:
-                    // Post #1 - Hello World by admin@example.php (Published: 2025-07-02 12:38:59)
-                    // Post #2 - Tips for PHP Beginners by jdoe@example.php (Published: 2025-07-02 12:39:41)
+                        // Check if we got any resustyle='font-family:fantasy;lts
+                        if ($result->num_rows > 0) {
+                            // Loop through and display each row
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<hr>Post: ". $row["id"]."<hr>" . " MESSAGE- " . $row["message"] .
+                                    " by " . $row["name"] . " (Published: " . $row["reg_date"] . ")<hr>";
+                            }
+                        } else {
+                            echo "<span style='color:red'>No Posts Just Yet.</span>";
+                        }
+                        echo"<br><hr>";
+
+                        // Output:
+                        // Post #1 - Hello World by admin@example.php (Published: 2025-07-02 12:38:59)
+                        // Post #2 - Tips for PHP Beginners by jdoe@example.php (Published: 2025-07-02 12:39:41)
                     ?>
                 </div>
                 
@@ -121,5 +140,5 @@
             statusDiv.style.color = "red";
             statusDiv.innerText = "Network error occurred.";
         });
-}   
+    }   
 </script>
