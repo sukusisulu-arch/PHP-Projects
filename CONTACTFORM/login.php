@@ -32,6 +32,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <link rel="stylesheet" href="BOOTSTRAPWEB\css\bootstrap.min.css">
+    <script src="BOOTSTRAPWEB\js\bootstrap.min.js"></script>
     <!-- Outputs the redirect tag only if the login succeeds -->
     <style>
         *{margin:0;padding:0;font-family:Arial;}
@@ -70,6 +72,9 @@
         </form>
 
     </div>
+    <div class="progress">
+            <div class="progress-bar" style="width: 10%;"></div>
+        </div>
 </body>
 </html>
 

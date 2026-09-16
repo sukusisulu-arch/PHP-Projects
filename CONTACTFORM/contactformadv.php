@@ -1,4 +1,4 @@
-
+<div class="php">
 <?php 
 include 'connection.php'; 
 
@@ -58,6 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 } 
 ?>
 
+</div>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +69,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="shortcut icon" href="picture11.jpg" type="image/x-icon">
-    
+    <link rel="stylesheet" href="BOOTSTRAPWEB\css\bootstrap.min.css">
+    <script src="BOOTSTRAPWEB\js\bootstrap.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -75,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             font-family:Cambria;
         }
         .php{
-            height:0vh;
+            display: none;
         }
         .php.show{height:max-content;}
         .button{position:absolute;left:50%;}
@@ -317,7 +320,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </style>
     
 </head>
-
+     <!-- Simple Bootstrap Layout Structure -->
+     <div class="container my-5 text-center">
+                🎉 <h1>Welcome</h1>
+    </div>
+        
     <header>
         <div class="logo-div"></div>
         <nav class="navigation"></nav>
@@ -358,16 +365,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <span id="message"></span>
             
-                <div class="menu-div" id="menu" >
+                <div class="jumbotron jumbotron-fluid menu-div" id="menu">
                     <menu>
                         <h1>Menu</h1>
                         <ul>
-                            <a href="">Home</a>
-                            <a href="">About</a>
-                            <a href="">SignUp</a>
-                                <a href="">Login</a>
-                            <a href="login.php">Admin</a>
-                            <button id="close" onclick="showhidemenu()">Close Menu</button>  
+                            <a href="" class="col">Home</a>
+                            <a href="" class="col">About</a>
+                            <a href="" class="col">SignUp</a>
+                            <a href="" class="col">Login</a>
+                            <a href="login.php" class="col">Admin</a>
+                            <button id="close" onclick="showhidemenu()" class="col">Close Menu</button>  
                         </ul>
                     </menu>
                 </div>
