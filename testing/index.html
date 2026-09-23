@@ -1,0 +1,25 @@
+<!-- index.html -->
+<button id="loadBtn">Greet Me</button>
+<div id="responseContainer"></div>
+
+<script>
+document.getElementById('loadBtn').addEventListener('click', () => {
+    // 1. Prepare data to send
+    const dataToSend = { name: "Alice" };
+
+    // 2. Initiate the asynchronous AJAX request
+    fetch('backend.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataToSend) // Convert JS object to JSON string
+    })
+    .then(response => response.json()) // Parse the incoming JSON response
+    .then(data => {
+        // 3. Dynamically update the webpage content
+        document.getElementById('responseContainer').innerText = data.message;
+    })
+    .catch(error => console.error('Error:', error));
+});
+</script>
