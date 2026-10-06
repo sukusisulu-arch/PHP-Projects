@@ -32,28 +32,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="BOOTSTRAPWEB\css\bootstrap.min.css">
+    <link rel="stylesheet" href="\Projects\BOOTSTRAPWEB\css\bootstrap.min.css">
     <script src="BOOTSTRAPWEB\js\bootstrap.min.js"></script>
     <!-- Outputs the redirect tag only if the login succeeds -->
     <style>
         *{margin:0;padding:0;font-family:Arial;}
-        body {background:linear-gradient(grey,brown,navy,black);}
+        body {background:linear-gradient(grey,navy,black);-ms-overflow-style: none; scrollbar-width: none;overflow-y: scroll;}
         section{height:30vh;display:flex;flex-direction:column;background:rgba(0,0,0,0.6);align-items:center;color:white;font-size:30px;}
         .login-div{text-align: center;}
         .container{display: flex;flex-direction:column;background:rgba(0,0,0,0.7);text-align:center;height:70vh;padding:10vw;}
         .fade-out {animation: fadeEffect 3s forwards;animation-delay: 1s;}
         @keyframes fadeEffect {from { opacity: 1; } to { opacity: 0; }}
-        .container input{border:none;border-radius:3px;padding:20px;margin:20px;width:30vh}
+        .container input{border:none;border-radius:3px;padding:2vh;margin:20px;width:30vh}
         .container button{width:100px;margin:1px;padding:10px;font-size:20px;border:white;display:flex;}
         form button:hover{border-radius:10px;background:green;}
-        .home:hover{background:magenta;}
+        .home:hover{background:red;}
         .home{position:relative;top:-2%;right:-27%;width:100px;padding:1vh;}
+        ::-webkit-scrollbar { display: none;}
+
     </style>
 </head>
 <body>
     <section>
         <br>
-        <a class="home" href="contactformadv.php" style="text-decoration:none;background:white;border-radius:10px;">Home</a>
+        <a class="home btn btn-outline-success" href="/Projects\CONTACTFORM\FINALPRODUCT\view\contactform.php">Home</a>
             <H1>Welcome Admin</H1>
         </form>
     </section>
@@ -68,14 +70,10 @@
 
             <input type="password" id="password" name="password" placeholder="Enter Password" required>
 
-            <button type="submit" id="login">Login</button>
+            <input type="submit" id="login" class="btn btn-outline-primary" style="width:20vw;display:block;" value="Login"></input>
         </form>
 
     </div>
-    <div class="progress">
-            <div class="progress-bar" style="width: 10%;"></div>
-        </div>
-</body>
 </html>
 
 

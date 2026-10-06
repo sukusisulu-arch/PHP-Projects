@@ -218,8 +218,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['add'])) {
         } 
 
         // Render saved local tasks initially
-        savedTasks.forEach(taskText => { 
-            ul.appendChild(createTaskElement(taskText)); 
+        saved.forEach(item => { 
+            ul.appendChild(); 
         }); 
         updateTaskCount(); 
 

@@ -48,8 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } 
 }
 
-// Handle login
-
 ?>
 
 <!DOCTYPE html>

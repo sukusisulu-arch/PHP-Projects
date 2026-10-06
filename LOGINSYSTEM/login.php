@@ -52,7 +52,7 @@
             echo"<h1 style='font-family:Arial;'>Registered Peeps</h1>";
             echo"<br><hr>";
             $sql = "SELECT id, username, email, password, phone, dob FROM register";
-            $result = $connection->query($sql);
+            $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
