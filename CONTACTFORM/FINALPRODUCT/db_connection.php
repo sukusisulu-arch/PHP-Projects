@@ -1,4 +1,7 @@
 <?php
+   
+    
+    
     try{
         // Connection
         mysqli_report(MYSQLI_REPORT_OFF); 
@@ -50,31 +53,28 @@
             country VARCHAR(255) NOT NULL,
             reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )";
-    // Table Maintenance Functions (Uniform Layout) 
-    function trunc($table) { 
-        global $connection; 
-        if ($connection->query("TRUNCATE TABLE `{$table}`")) { 
-            echo "Truncated table: " . htmlspecialchars($table) . "<br>"; 
-        } 
-    } 
-
-    function drop($table) { 
-        global $connection; 
-        if ($connection->query("DROP TABLE IF EXISTS `{$table}`")) { 
-            echo "Dropped table: " . htmlspecialchars($table) . "<br>"; 
-        } 
-    } 
-
-    function clear($table) { 
-        global $connection; 
-        if ($connection->query("DELETE FROM `{$table}`")) { 
-            echo "Cleared all data from table: " . htmlspecialchars($table) . "<br>"; 
-        } 
-    }
-
+        // REFACTORED: Passing \(connection via closure context 'use' instead of global)
+        $trunc = function ($table) use ($connection) { 
+            if ($connection->query("TRUNCATE TABLE `{$table}`")) { 
+                echo "Truncated table: " . htmlspecialchars($table) . "<br>"; 
+            } 
+        };
+    
+        $drop = function ($table) use ($connection) { 
+            if ($connection->query("DROP TABLE IF EXISTS `{$table}`")) { 
+                echo "Dropped table: " . htmlspecialchars($table) . "<br>"; 
+            } 
+        };
+    
+        $clear = function ($table) use ($connection) { 
+            if ($connection->query("DELETE FROM `{$table}`")) { 
+                echo "Cleared all data from table: " . htmlspecialchars($table) . "<br>"; 
+            } 
+        };
+    
         // Run table executions first
         if ($connection->query($contact)) {
-            echo '<hr><span style="color:green">Table: contact --> Created or Already Exists</span><hr><br><br>';
+            echo '<hr><span style="color:green;">Table: contact --> Created or Already Exists</span><hr><br><br>';
         } else {
             echo '<hr><span style="color:red">Table: contact --> Creation Failed: </span>' . $connection->error . "<hr><br>";
         }

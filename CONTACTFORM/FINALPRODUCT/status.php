@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <link rel="icon" href="/CONTACTFORM/OTHERSTUFF/OTHERSTUFF/logo2.png" type="image/png">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif;-ms-overflow-style: none; scrollbar-width: none;overflow-y: scroll; }
-        body { background:grey; padding: 20px; color: #333; }
+        body { background:black; padding: 20px; color: #333; }
         ::-webkit-scrollbar { display: none;}
-        .status-container { max-height:90vh; max-width: 90vw; margin: 0 auto; background: #ffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); padding: 40px;background: linear-gradient(grey,bisque);}
+        .status-container { max-height:90vh; max-width: 90vw; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(59,225,554,0.9); padding: 40px;background: linear-gradient(rgba(222,344,255,0.5),rgba(222,344,255,0.1));}
         .header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
         .btn { padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; text-decoration: none; display: inline-block; }
         .btn-logout { background-color: #6c757d; color: white; }
-        .btn-status { background-color: bisque; color: black; }
-        .btn-info { background-color: white; color: black; }
+        .btn-status {background: rgba(225,255,255,0.4); color: white; }
+        .btn-info { background-color: white; color: black;background: rgba(0,0,0,0.8);color:white; }
         .btn-delete { background-color: #d9534f; color: white; margin-top: 10px; }
         .btn:hover { opacity: 0.9; }
         .dashboard-grid { display: flex; flex-direction: column; gap: 20px; margin-top: 20px; }
         .panel { color:grey;background: rgba(0,0,0,0.1); backdrop-filter:blur(2px); border-radius: 10px; padding: 30px; display:none;}
         #panel.show{display:block;}
-        .status-div { background: #ffe4c4; margin-bottom: 20px; display: none; }
+        .status-div { background: #ffe4c4; margin-bottom: 20px; display: none;background: rgba(225,255,255,0.4); backdrop-filter:blur(2px); color:white; }
         #status-div.open { display: block; }
         #statusMessage { margin-top: 10px; font-weight: bold; }
-        .stats-card { font-family:fantasy; color:white; background: black; border-left: 5px solid #70ad47; padding: 15px; margin-bottom: 20px; border-radius: 4px; }
+        .stats-card { font-family:fantasy; color:white; background: black; border-left: 5px solid #70ad47; padding: 15px; margin-bottom: 20px; border-radius: 4px;color:white; }
         .contacts-title {color: #333; margin-bottom: 15px; font-size: 1.5rem; }
         .table-responsive { overflow-x: auto; max-width: 100vw; min-width: 20vw;  }
         .contacts-table { border-collapse: collapse; width:100%; }
@@ -43,7 +44,7 @@
 <div id="status-container" class="status-container">
     <div class="header-row">
         <h1>Dashboard</h1>
-        <a href="\Projects\CONTACTFORM\FINALPRODUCT\view\login.php" class="btn btn-logout">Logout</a>
+        <a href="admin_login.php" class="btn btn-logout">Logout</a>
     </div>
 
     <button onclick="toggleStatus()" id="status-button" class="btn btn-status">Show Status</button><br><br>
@@ -54,43 +55,36 @@
             <h2>Status</h2>
             
             <?php 
+                include_once 'db_connection.php';
                 
-              
-                require 'CONTACTFORM\FINALPRODUCT\autoload.php';
-                use Projects\core\connection;
-
                 if($_POST){ 
                     // preg_replace removes any character that is NOT a letter, number, or underscore
                     if(isset($_POST['truncate'])){
                         $table = preg_replace('/[^a-zA-Z0-9_]/', '', $_POST['truncate']);
-                        trunc($table);
+                        $trunc($table);
                     } 
                     if(isset($_POST['drop'])){
                         $table = preg_replace('/[^a-zA-Z0-9_]/', '', $_POST['drop']);
-                        drop($table);
+                        $drop($table);
                     } 
                     if(isset($_POST['clear'])){
                         $table = preg_replace('/[^a-zA-Z0-9_]/', '', $_POST['clear']);
-                        clear($table);
-                    } 
+                        $clear($table);                    } 
                 } 
             ?> 
-
+            <br>
             <form action="" method="POST"> 
-                <label>Table Name:</label> 
-                <input type="text" name="truncate" required> 
+                <input type="text" name="truncate" placeholder="Table Name" required> 
                 <input type="submit" value="truncate">
             </form> 
 
             <form action="" method="POST"> 
-                <label>Table Name:</label> 
-                <input type="text" name="drop" required> 
+                <input type="text" name="drop" placeholder="Table Name" required> 
                 <input type="submit" value="drop">
             </form> 
 
             <form action="" method="POST"> 
-                <label>Table Name:</label> 
-                <input type="text" name="clear" required> 
+                <input type="text" name="clear" placeholder="Table Name" required> 
                 <input type="submit" value="clear">
             </form>
 
